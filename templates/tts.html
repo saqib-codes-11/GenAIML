@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <link rel="stylesheet" href="static/tts.css" />
+    <script src="static/myQueue.js"></script>
+    <script src="static/tts.js"></script>
+  </header>
+  <body>
+    <h1>Voice of Laurie Anderson</h1>
+
+    <div class="container">
+      <div class="leftImage">
+        <img src="static/la-min.jpg" />
+      </div>
+      <div id="textBox" class="text">
+        <p id="generatedText">Click GO to start text generation</p>
+      </div>
+      <div class="rightImage">
+        <img src="static/laflip-min.jpg" />
+      </div>
+    </div>
+    <button type="button" id="hideKeywords" onclick="hideKeywords()">v</button>
+    <br />
+    <span id="keywordsContainer">
+      <h2>Keywords To Be Used</h2>
+      <p id="keyWords"></p>
+    </span>
+    <button type="button" id="hideControls" onclick="hideControls()">v</button>
+    <br />
+    <span id="controls" class="container">
+      <div id="controlsLeft">
+        <p>Select keyword Source below<br />Then Click Go</p>
+
+        <span class="dropdown">
+          <button class="dropbtn" id="dropButton">
+            Select Source of Keywords
+          </button>
+          <span class="dropdown-content">
+            <a onclick="clickGoogleAus()"
+              >Trending Google Searches - Australia</a
+            >
+            <a onclick="clickGoogleUSA()">Trending Google Searches - USA</a>
+            <a onclick="clickRedditNewsHot()">Reddit - Subreddit:News - Hot</a>
+            <a onclick="clickRedditNewsNew()">Reddit - Subreddit:News - New</a>
+            <a onclick="clickRedditFunnyHot()"
+              >Reddit - Subreddit:Funny - Hot</a
+            >
+            <a onclick="clickRedditFunnyNew()"
+              >Reddit - Subreddit:Funny - New</a
+            >
+            <a onclick="clickEnterYourOwn()">Enter Your Own</a>
+          </span>
+        </span>
+        <input
+          type="text"
+          id="kwToUse"
+          name="kwToUse"
+          placeholder="Enter your own Keywords"
+          onchange="updateKWTBU()"
+          disabled
+        />
+        <button id="goButton" onclick="onLoad()" type="button" disabled>
+          Go
+        </button>
+      </div>
+      <span id="or">
+        <h2>OR</h2>
+      </span>
+      <span id="controlsRight">
+        <p>Automation Controls:</p>
+        <button onclick="onclickStart()" id="startauto">
+          Start Automation
+        </button>
+        <button onclick="onclickStop()" id="stopauto">Stop Automation</button>
+      </span>
+    </span>
+  </body>
+  <script>
+    var textBox = document.getElementById("generatedText");
+
+    //The elements were not getting disabled every time on browser refresh/page reload
+    document.getElementById("goButton").disabled = true;
+    document.getElementById("kwToUse").disabled = true;
+    document.getElementById("kwToUse").value = "";
+  </script>
+</html>
